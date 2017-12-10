@@ -6,10 +6,26 @@ namespace EvenLoggerParser
 {
 	static class EventRecordAnalyzer
 	{
-		public static int GetEventRecordCount(string pName, List<EventRecord> pRecords)
+		public static int GetEventRecordCount(string pName, List<EventRecord> pRecords, bool isAdditional = false)
 		{
 			int count = 0;
-			foreach (EventRecord er in pRecords) { if (er.name == pName) { count++; } }
+			foreach (EventRecord er in pRecords)
+			{
+				if (isAdditional)
+				{
+					if(er.additional.Contains(pName))
+					{
+						count++;
+					}
+				}
+				else
+				{
+					if (er.name == pName)
+					{
+						count++;
+					}
+				}
+			}
 			Console.WriteLine("Count of " + pName + " is: " + count);
 			return count;
 		}

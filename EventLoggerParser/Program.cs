@@ -8,8 +8,8 @@ namespace EvenLoggerParser
 	{
 		static void Main(string[] args)
 		{
-
-			List<EventRecord> records = EventRecordParser.ParseFile(
+			EventRecordParser parser = new EventRecordParser();
+			List<EventRecord> records = parser.ParseFile(
 				"D:\\ja004\\Dropbox\\Project\\coding\\EvenLoggerParser\\events_2017_12_10 - 2017_01_11.txt");
 
 			/*int mCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Masturbation, records);
@@ -24,6 +24,7 @@ namespace EvenLoggerParser
 			*/
 
 			int sportCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Sport, records);
+			int posilovaniCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Posilovani, records, true);
 
 			Console.ReadLine();
 		}

@@ -7,5 +7,6 @@
 		public static string Masturbation = "M";
 		public static string Poop = "P";
 		public static string Sport = "Sport";
+		public static string Posilovani = "Posilování";
 	}
 }

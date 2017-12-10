@@ -5,9 +5,11 @@ using System.Text;
 
 namespace EvenLoggerParser
 {
-	static class EventRecordParser
+	public class EventRecordParser
 	{
-		public static List<EventRecord> ParseFile(string pFile)
+		private EventRecord lastCorrectRecord;
+
+		public List<EventRecord> ParseFile(string pFile)
 		{
 			int counter = 0;
 			string line;
@@ -24,6 +26,11 @@ namespace EvenLoggerParser
 				if (er.isCorrect)
 				{
 					records.Add(er);
+					lastCorrectRecord = er;
+				}
+				else if (er.isAdditional)
+				{
+					lastCorrectRecord.AddAdditional(er);
 				}
 				counter++;
 			}
