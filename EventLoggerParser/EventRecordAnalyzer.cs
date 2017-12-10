@@ -1,26 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EvenLoggerParser
 {
 	static class EventRecordAnalyzer
 	{
-		public static int GetEventRecordCount(string pName, List<EventRecord> pRecords, bool isAdditional = false)
+
+		public static int GetEventRecordCount(
+			string pName,
+			List<EventRecord> pRecords,
+			DateTime? pFrom = null,
+			DateTime? pTo = null)
 		{
 			int count = 0;
-			foreach (EventRecord er in pRecords)
+			foreach(EventRecord er in pRecords)
 			{
-				if (isAdditional)
+				if(er.name == pName || er.additional.Contains(pName))
 				{
-					if(er.additional.Contains(pName))
+					if ((pFrom != null && er.dateTime < pFrom) || (pTo != null && er.dateTime > pTo))
 					{
-						count++;
+
 					}
-				}
-				else
-				{
-					if (er.name == pName)
+					else
 					{
 						count++;
 					}
@@ -34,9 +35,9 @@ namespace EvenLoggerParser
 		{
 			int count = 0;
 			long ticks = 0;
-			foreach (EventRecord er in pRecords)
+			foreach(EventRecord er in pRecords)
 			{
-				if (er.name == pName)
+				if(er.name == pName)
 				{
 					count++;
 					EventRecord copy = er.Clone();

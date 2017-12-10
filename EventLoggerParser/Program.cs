@@ -23,8 +23,12 @@ namespace EvenLoggerParser
 			DateTime sleepAverage = EventRecordAnalyzer.GetAverageTime(EventCode.Sleep, records);
 			*/
 
+			int sexCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Sex, records);
+			int sexTerkaCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Sex, records, new DateTime(2017, 6, 1));
+
+
 			int sportCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Sport, records);
-			int posilovaniCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Posilovani, records, true);
+			int posilovaniCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Posilovani, records);
 
 			Console.ReadLine();
 		}

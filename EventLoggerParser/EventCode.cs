@@ -8,5 +8,6 @@
 		public static string Poop = "P";
 		public static string Sport = "Sport";
 		public static string Posilovani = "Posilování";
+		public static string Sex = "S";
 	}
 }
