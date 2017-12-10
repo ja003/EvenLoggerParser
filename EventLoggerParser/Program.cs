@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 
 namespace EvenLoggerParser
 {
@@ -8,7 +9,8 @@ namespace EvenLoggerParser
 		static void Main(string[] args)
 		{
 
-			List<EventRecord> records = EventRecordParser.ParseFile("C:\\Users\\ja004\\Dropbox\\Project\\coding\\EvenLoggerParser\\events_2017_06_24.txt");
+			List<EventRecord> records = EventRecordParser.ParseFile(
+				"D:\\ja004\\Dropbox\\Project\\coding\\EvenLoggerParser\\events_2017_12_10 - 2017_01_11.txt");
 
 			int mCount = EventRecordAnalyzer.GetEventRecordCount("M", records);
 			DateTime mAverage = EventRecordAnalyzer.GetAverageTime("M", records);
