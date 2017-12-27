@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EvenLoggerParser
+namespace EventLoggerParser
 {
 	public class EventRecord
 	{

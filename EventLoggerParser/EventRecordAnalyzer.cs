@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace EvenLoggerParser
+namespace EventLoggerParser
 {
 	static class EventRecordAnalyzer
 	{

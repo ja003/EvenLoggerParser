@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
+using System.IO;
 
-namespace EvenLoggerParser
+namespace EventLoggerParser
 {
 	class Program
 	{
 		static void Main(string[] args)
 		{
 			EventRecordParser parser = new EventRecordParser();
-			List<EventRecord> records = parser.ParseFile(
-				//"D:\\ja004\\Dropbox\\Project\\coding\\EvenLoggerParser\\events_test.txt");
-				"D:\\ja004\\Dropbox\\Project\\coding\\EvenLoggerParser\\events_2017_12_10 - 2017_01_11.txt");
+			string solutionPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+			string file = solutionPath + "\\records\\" + "events_2017_12_27 - 2017_01_11.txt";
+			List<EventRecord> records = parser.ParseFile(file);
+			Console.WriteLine(file);
+
 
 			/*int mCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Masturbation, records);
 			DateTime mAverage = EventRecordAnalyzer.GetAverageTime(EventCode.Masturbation, records);

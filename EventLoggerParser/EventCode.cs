@@ -1,4 +1,4 @@
-﻿namespace EvenLoggerParser
+﻿namespace EventLoggerParser
 {
 	public static class EventCode
 	{
