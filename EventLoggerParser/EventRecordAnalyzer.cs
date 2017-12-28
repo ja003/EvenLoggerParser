@@ -16,9 +16,9 @@ namespace EventLoggerParser
 			int count = 0;
 			foreach(EventRecord er in pRecords)
 			{
-				if(er.name == pName || er.additional.Contains(pName))
+				if(er.Name == pName || er.Additional.Contains(pName))
 				{
-					if ((pFrom != null && er.dateTime < pFrom) || (pTo != null && er.dateTime > pTo))
+					if ((pFrom != null && er.DateTime < pFrom) || (pTo != null && er.DateTime > pTo))
 					{
 
 					}
@@ -48,12 +48,12 @@ namespace EventLoggerParser
 
 			foreach(EventRecord er in pRecords)
 			{
-				if(er.name == pName)
+				if(er.Name == pName)
 				{
 					count++;
 					EventRecord copy = er.Clone();
-					copy.dateTime = new DateTime(1, 1, 1, copy.dateTime.Hour, copy.dateTime.Minute, copy.dateTime.Second);
-					long erTicks = copy.dateTime.Ticks;
+					copy.DateTime = new DateTime(1, 1, 1, copy.DateTime.Hour, copy.DateTime.Minute, copy.DateTime.Second);
+					long erTicks = copy.DateTime.Ticks;
 					if (erTicks < pAverageTime.Value.Ticks &&
 					    (pAverageTime.Value.Ticks - erTicks) > pAverageTime.Value.Ticks / 2)
 					{

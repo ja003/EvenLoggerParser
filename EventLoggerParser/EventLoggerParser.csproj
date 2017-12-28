@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataExporter.cs" />
     <Compile Include="EventCode.cs" />
     <Compile Include="EventRecord.cs" />
     <Compile Include="EventRecordAnalyzer.cs" />

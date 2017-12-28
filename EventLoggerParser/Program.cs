@@ -10,7 +10,7 @@ namespace EventLoggerParser
 		{
 			EventRecordParser parser = new EventRecordParser();
 			string solutionPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-			string file = solutionPath + "\\records\\" + "events_2017_12_27 - 2017_01_11.txt";
+			string file = solutionPath + "\\records\\" + "events_2017_12_28 - 2017_01_11.txt";
 			List<EventRecord> records = parser.ParseFile(file);
 			Console.WriteLine(file);
 
@@ -25,6 +25,14 @@ namespace EventLoggerParser
 			int sleepCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Sleep, records);
 			DateTime sleepAverage = EventRecordAnalyzer.GetAverageTime(EventCode.Sleep, records);
 			*/
+
+			List<EventRecord> poop = parser.ExtractRecordsOfName(records, EventCode.Poop);
+			Console.WriteLine("exporting num of poop = " + poop.Count);
+			DataExporter.ExportRecords(poop);
+
+			List<EventRecord> masturbation = parser.ExtractRecordsOfName(records, EventCode.Masturbation);
+			Console.WriteLine("exporting num of masturbation = " + masturbation.Count);
+			DataExporter.ExportRecords(masturbation);
 
 			DateTime sleepAverage = EventRecordAnalyzer.GetAverageTime(EventCode.Sleep, records, new DateTime(1, 1, 1, 23, 59, 59));
 			//TODO: make weighted average

@@ -19,16 +19,16 @@ namespace EventLoggerParser
 			// Read the file and display it line by line.
 			var filestream = new System.IO.FileStream(pFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 			StreamReader file = new StreamReader(filestream);
-			while ((line = file.ReadLine()) != null)
+			while((line = file.ReadLine()) != null)
 			{
 				//Console.WriteLine(line);
 				EventRecord er = new EventRecord(line);
-				if (er.isCorrect)
+				if(er.IsCorrect)
 				{
 					records.Add(er);
 					lastCorrectRecord = er;
 				}
-				else if (er.isAdditional)
+				else if(er.IsAdditional)
 				{
 					lastCorrectRecord.AddAdditional(er);
 				}
@@ -37,5 +37,17 @@ namespace EventLoggerParser
 			return records;
 		}
 
+		public List<EventRecord> ExtractRecordsOfName(List<EventRecord> pRecords, string pName)
+		{
+			List<EventRecord> records = new List<EventRecord>();
+			foreach(EventRecord r in pRecords)
+			{
+				if (r.Name == pName)
+				{
+					records.Add(r.Clone());
+				}
+			}
+			return records;
+		}
 	}
 }
