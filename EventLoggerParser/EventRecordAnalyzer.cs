@@ -18,7 +18,7 @@ namespace EventLoggerParser
 			{
 				if(er.Name == pName || er.Additional.Contains(pName))
 				{
-					if ((pFrom != null && er.DateTime < pFrom) || (pTo != null && er.DateTime > pTo))
+					if (pFrom != null && er.DateTime < pFrom || pTo != null && er.DateTime > pTo)
 					{
 
 					}
@@ -28,7 +28,7 @@ namespace EventLoggerParser
 					}
 				}
 			}
-			Console.WriteLine("Count of " + pName + " is: " + count);
+			Console.WriteLine("Count of " + pName + " = " + count);
 			return count;
 		}
 

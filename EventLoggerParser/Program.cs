@@ -11,10 +11,11 @@ namespace EventLoggerParser
 		static void Main(string[] args)
 		{
 			EventRecordParser parser = new EventRecordParser();
-			string solutionPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-			string file = solutionPath + "\\records\\" + "events_2017_12_28 - 2017_01_11.txt";
-			List<EventRecord> records = parser.ParseFile(file);
-			Console.WriteLine(file);
+			//string solutionPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+			string solutionPath = "C:\\Users\\Admin\\Dropbox\\Personal\\EventLogger\\2018\\";
+			string fullFilePath = solutionPath + "2018_12_26-2018_01_01.txt";
+			List<EventRecord> records = parser.ParseFile(fullFilePath);
+			Console.WriteLine(fullFilePath);
 
 
 			/*int mCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Masturbation, records);
@@ -33,20 +34,24 @@ namespace EventLoggerParser
 			{
 				List<EventRecord> poop = parser.ExtractRecordsOfName(records, EventCode.Poop);
 				List<EventRecord> masturbation = parser.ExtractRecordsOfName(records, EventCode.Masturbation);
-				List<EventRecord> sleep = parser.ExtractRecordsOfName(records, EventCode.Sleep);
-				List<EventRecord> wakeUp = parser.ExtractRecordsOfName(records, EventCode.WakeUp);
+				List<EventRecord> sex = parser.ExtractRecordsOfName(records, EventCode.Sex);
+				//List<EventRecord> sleep = parser.ExtractRecordsOfName(records, EventCode.Sleep);
+				//List<EventRecord> wakeUp = parser.ExtractRecordsOfName(records, EventCode.WakeUp);
 
-				IEnumerable<EventRecord> allTogether = poop.Concat(masturbation).Concat(sleep).Concat(wakeUp);
+				IEnumerable<EventRecord> allTogether = poop.Concat(masturbation).Concat(sex);//.Concat(sleep).Concat(wakeUp);
 				List<EventRecord> allTogetherList = allTogether.ToList();
 
 				Console.WriteLine("exporting num of poop = " + poop.Count);
 				DataExporter.ExportRecords(poop);
-				Console.WriteLine("exporting num of sleep = " + sleep.Count);
-				DataExporter.ExportRecords(sleep);
+				//Console.WriteLine("exporting num of sleep = " + sleep.Count);
+				//DataExporter.ExportRecords(sleep);
 				Console.WriteLine("exporting num of masturbation = " + masturbation.Count);
 				DataExporter.ExportRecords(masturbation);
-				Console.WriteLine("exporting num of wakeUp = " + wakeUp.Count);
-				DataExporter.ExportRecords(wakeUp);
+				//Console.WriteLine("exporting num of wakeUp = " + wakeUp.Count);
+				//DataExporter.ExportRecords(wakeUp);
+				Console.WriteLine("exporting num of sex = " + sex.Count);
+				DataExporter.ExportRecords(sex);
+
 				DataExporter.ExportRecords(allTogetherList, "All");
 			}
 
@@ -62,7 +67,7 @@ namespace EventLoggerParser
 
 
 			int sexCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Sex, records);
-			int sexTerkaCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Sex, records, new DateTime(2017, 6, 1));
+			//int sexTerkaCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Sex, records, new DateTime(2017, 6, 1));
 
 			int mCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Masturbation, records);
 			int poopCount = EventRecordAnalyzer.GetEventRecordCount(EventCode.Poop, records);
